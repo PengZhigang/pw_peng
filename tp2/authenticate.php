@@ -3,8 +3,8 @@ session_start();
 include "users.php";
 if($_SERVER['REQUEST_METHOD']!="POST")
 { 
-	//or use: header("Location: localhost/tp2/signin.php");
-	echo "<script>alert('REQUEST_METHOD MUST BE POST!!'); history.go(-1);</script>"; 
+	//or use: header("Location: localhost/www/tp2/signin.php");
+	echo "REQUEST_METHOD MUST BE POST!!"; 
 	exit;
 }
 if ( isset($_POST['login']) && isset($_POST['mdp']) )
@@ -15,21 +15,21 @@ if ( isset($_POST['login']) && isset($_POST['mdp']) )
 
 if($login == "" || $mdp == "")  
 {  
-	echo "<script>alert('Please enter Login or mdp！'); history.go(-1);</script>";  
+	echo "Please enter Login or mdp";  
 	exit;
 } 
 
 if(!isset($users[$login])) 
 {
 	$_SESSION["message"]="Can not find account with this login " . $login;
-	echo "<script>alert('Login or mdp incorrect！');history.go(-1);</script>";  
+	echo "Login or mdp incorrect!";  
 	exit;
 }
  
 if($users[$login] != $mdp)
 { 
 	$_SESSION["message"]="mdp wrong with this login " . $login;
-	echo "<script>alert('Login or mdp est incorrect！');history.go(-1);</script>";  
+	echo "'Login or mdp est incorrect!";  
 	exit;
 }  
 $_SESSION[$login]=$login . "_authenticated";
